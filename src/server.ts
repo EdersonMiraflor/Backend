@@ -14,8 +14,12 @@ interface Config {
 }
 
 const config: Config = {
-  port: Number(process.env.PORT), // Render will provide PORT
+  port: Number(process.env.PORT) || 5000, 
   nodeEnv: process.env.NODE_ENV || "production",
+
+  // port: Number(process.env.PORT) || 5000, 
+  // nodeEnv: process.env.NODE_ENV || "development",
+
 };
 
 const app = express();

@@ -9,6 +9,9 @@ export const sendEmail = async (req: Request, res: Response) => {
   }
 
   try {
+    console.log("GMAIL_USER:", process.env.GMAIL_USER);
+    console.log("GMAIL_APP_PASSWORD (first 3 chars):", process.env.GMAIL_APP_PASSWORD ? process.env.GMAIL_APP_PASSWORD.substring(0, 3) : "N/A");
+    console.log("YOUR_EMAIL:", process.env.YOUR_EMAIL);
     const transporter = createTransport();
 
     await transporter.sendMail({
