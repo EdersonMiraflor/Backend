@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import createTransport from '../configurations/gmail/gmail.config';
+import setupSendGrid from '../configurations/sendgrid/sendgrid.config';
 
 export const sendEmail = async (req: Request, res: Response) => {
   const { name, email, subject, message } = req.body;
@@ -9,18 +9,17 @@ export const sendEmail = async (req: Request, res: Response) => {
   }
 
   try {
-    console.log("GMAIL_USER:", process.env.GMAIL_USER);
-    console.log("GMAIL_APP_PASSWORD (first 3 chars):", process.env.GMAIL_APP_PASSWORD ? process.env.GMAIL_APP_PASSWORD.substring(0, 3) : "N/A");
-    console.log("YOUR_EMAIL:", process.env.YOUR_EMAIL);
-    const transporter = createTransport();
+    const sgMail = setupSendGrid();
 
-    await transporter.sendMail({
-      from: process.env.GMAIL_USER, // The authenticated sender (your Gmail)
+    const msg = {
       to: process.env.YOUR_EMAIL, // Your email address to receive messages
+      from: process.env.SENDGRID_EMAIL as string, // Use your SendGrid verified sender email
       replyTo: email, // The user's email, so you can easily reply to them
       subject: `Portfolio Contact: ${subject} from ${name} (${email})`,
       html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Subject: ${subject}</p><p>Message: ${message}</p>`,
-    });
+    };
+
+    await sgMail.send(msg);
 
     res.status(200).json({ message: 'Email sent successfully!' });
   } catch (error) {
