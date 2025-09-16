@@ -1,4 +1,4 @@
-import sgMail from '@sendgrid/mail';
+import sgMail from "@sendgrid/mail";
 
 const setupSendGrid = () => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
