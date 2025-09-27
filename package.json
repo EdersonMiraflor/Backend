@@ -1,11 +1,8 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "dist/server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/server.ts",
-    "prebuild": "npm install",
-    "build": "tsc",
     "start": "node dist/server.js"
   },
   "author": "",
@@ -30,8 +27,5 @@
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
-  },
-  "engines": {
-    "node": "18.x"
   }
 }
