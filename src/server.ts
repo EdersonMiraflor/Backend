@@ -1,16 +1,9 @@
+
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import chatbotRoutes from './routes/chatbot.routes';
 import emailRoutes from './routes/email.routes';
-import dotenv from 'dotenv';
-import express from 'express';
-import cors from 'cors';
-import chatbotRoutes from './routes/chatbot.routes';
-import emailRoutes from './routes/email.routes';
-
-
-dotenv.config({ path: './src/configurations/.env', quiet: true });
 
 dotenv.config({ path: './src/configurations/.env', quiet: true });
 
@@ -20,8 +13,6 @@ interface Config {
 }
 
 const config: Config = {
-  port: Number(process.env.PORT),
-  nodeEnv: process.env.NODE_ENV || '',
   port: Number(process.env.PORT),
   nodeEnv: process.env.NODE_ENV || '',
 };
@@ -35,10 +26,6 @@ app.use(express.json());
 // Health check
 app.get('/', (req, res) => {
   res.send("Server Response: Server is running! Everything works successfully");
-// Health check
-app.get('/', (req, res) => {
-  res.send("Server Response: Server is running! Everything works successfully");
-  console.log("Log: Server is running Successfully!");
 });
 
 // API routes
