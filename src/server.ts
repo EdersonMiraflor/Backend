@@ -39,7 +39,6 @@ console.log('SENDGRID_API_KEY from env:', process.env.SENDGRID_API_KEY);
 // Start server
 app.listen(config.port, () => {
   console.log(`Server running on port ${config.port} in ${config.nodeEnv} mode.`);
-  console.log(`Server running on port ${config.port} in ${config.nodeEnv} mode.`);
 });
 
 export default config;
