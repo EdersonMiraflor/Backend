@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node src/server.ts",
+    "prebuild": "npm install",
+    "build": "tsc",
     "start": "node dist/server.js"
   },
   "author": "",
